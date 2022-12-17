@@ -1,10 +1,10 @@
 <!--
  * @Author: fantiga
  * @Date: 2022-12-17 19:40:36
- * @LastEditTime: 2022-12-17 19:54:09
+ * @LastEditTime: 2022-12-17 20:46:28
  * @LastEditors: fantiga
  * @Description: 
- * @FilePath: /react-github-ts/README.zh-CN.md
+ * @FilePath: /github-query-react-ts/README.zh-CN.md
 -->
 
 # github-query-react-ts
@@ -16,6 +16,7 @@
 
 欢迎。
 这是一个使用 React 和 GitHub REST API 实现 GitHub 存储库搜索功能的演示。
+[演示](https://fantiga.github.io/github-query-react-ts/dist/)
 
 ## 目录
 

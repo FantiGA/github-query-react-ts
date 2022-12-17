@@ -1,9 +1,9 @@
 <!--
  * @Author: fantiga
  * @Date: 2022-12-13 20:35:36
- * @LastEditTime: 2022-12-17 19:54:03
+ * @LastEditTime: 2022-12-17 20:46:13
  * @LastEditors: fantiga
- * @FilePath: /react-github-ts/README.md
+ * @FilePath: /github-query-react-ts/README.md
 -->
 # github-query-react-ts
 
@@ -14,6 +14,7 @@
 
 Welcome.
 This is a demo of implementing GitHub repository search functionality with React and the GitHub REST API.
+[Demo](https://fantiga.github.io/github-query-react-ts/dist/)
 
 ## Table of Contents
 
