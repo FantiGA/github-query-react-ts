@@ -1,7 +1,7 @@
 <!--
  * @Author: fantiga
  * @Date: 2022-12-13 20:35:36
- * @LastEditTime: 2022-12-17 20:46:13
+ * @LastEditTime: 2022-12-17 20:48:39
  * @LastEditors: fantiga
  * @FilePath: /github-query-react-ts/README.md
 -->
@@ -13,7 +13,9 @@
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 Welcome.
+
 This is a demo of implementing GitHub repository search functionality with React and the GitHub REST API.
+
 [Demo](https://fantiga.github.io/github-query-react-ts/dist/)
 
 ## Table of Contents
