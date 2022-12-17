@@ -1,14 +1,16 @@
 /*
  * @Author: fantiga
  * @Date: 2022-12-13 20:53:04
- * @LastEditTime: 2022-12-17 19:19:18
+ * @LastEditTime: 2022-12-17 20:38:03
  * @LastEditors: fantiga
- * @FilePath: /react-github-ts/src/pages/Index.tsx
+ * @FilePath: /github-query-react-ts/src/pages/Index.tsx
  */
 
 import { FC, useState } from 'react';
 
 import Box from '@mui/material/Box';
+import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
+import { Link, Typography } from '@mui/material';
 
 import Query from '@components/Query';
 import Result from '@components/Result';
@@ -18,12 +20,40 @@ const Index: FC = () => {
 
   return (
     <>
+      <Box sx={{ textAlign: 'center', m: '2em' }}>
+        <Typography variant="h3" gutterBottom>
+          GitHub Query React TS
+        </Typography>
+      </Box>
       <Box sx={{ m: '2em' }}>
         <Query getKeyword={(keyword) => setKeyword(keyword)} />
       </Box>
       <Box sx={{ m: '2em' }}>
         <Result keyword={keyword} />
       </Box>
+      <Grid2 container xs={12}>
+        <Grid2 container xs={12} sx={{ textAlign: 'center', m: '1em' }}>
+          <Grid2 display="flex" justifyContent="center" alignItems="center" xs={12}>
+            <Link href="https://github.com/FantiGA/github-query-react-ts/blob/master/README.md">
+              README(English)
+            </Link>
+            <Link
+              href="https://github.com/FantiGA/github-query-react-ts/blob/master/README.zh-CN.md"
+              marginLeft={1}
+            >
+              README(Chinese)
+            </Link>
+            <Link href="https://github.com/FantiGA" marginLeft={1}>
+              @FantiGA
+            </Link>
+          </Grid2>
+        </Grid2>
+        <Grid2 container xs={12} sx={{ textAlign: 'center', m: '1em' }}>
+          <Grid2 display="flex" justifyContent="center" alignItems="center" xs={12}>
+            Written in React18.2 / Typescript / Material UI.
+          </Grid2>
+        </Grid2>
+      </Grid2>
     </>
   );
 };
