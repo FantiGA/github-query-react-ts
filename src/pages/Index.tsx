@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-12-13 20:53:04
- * @LastEditTime: 2022-12-17 20:38:03
+ * @LastEditTime: 2022-12-17 20:54:28
  * @LastEditors: fantiga
  * @FilePath: /github-query-react-ts/src/pages/Index.tsx
  */
@@ -39,11 +39,11 @@ const Index: FC = () => {
             </Link>
             <Link
               href="https://github.com/FantiGA/github-query-react-ts/blob/master/README.zh-CN.md"
-              marginLeft={1}
+              marginLeft={2}
             >
-              README(Chinese)
+              README(Simplified Chinese)
             </Link>
-            <Link href="https://github.com/FantiGA" marginLeft={1}>
+            <Link href="https://github.com/FantiGA" marginLeft={2}>
               @FantiGA
             </Link>
           </Grid2>
