@@ -3,7 +3,6 @@
  * @Date: 2022-12-13 20:30:29
  * @LastEditTime: 2022-12-13 21:10:12
  * @LastEditors: fantiga
- * @Description: 
  * @FilePath: /react-github-ts/webpack.config.js
  */
 

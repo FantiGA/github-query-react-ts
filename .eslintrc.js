@@ -1,10 +1,9 @@
 /*
  * @Author: fantiga
  * @Date: 2022-11-16 19:43:52
- * @LastEditTime: 2022-11-16 20:03:03
+ * @LastEditTime: 2022-12-17 18:00:13
  * @LastEditors: fantiga
- * @Description: 
- * @FilePath: /test-for-mp-frontend-FantiGA/react/.eslintrc.js
+ * @FilePath: /react-github-ts/.eslintrc.js
  */
 
 module.exports = {

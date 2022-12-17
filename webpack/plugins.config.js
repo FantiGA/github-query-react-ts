@@ -1,9 +1,8 @@
 /*
  * @Author: fantiga
  * @Date: 2022-11-16 19:49:29
- * @LastEditTime: 2022-12-13 21:19:13
+ * @LastEditTime: 2022-12-17 18:00:47
  * @LastEditors: fantiga
- * @Description: 
  * @FilePath: /react-github-ts/webpack/plugins.config.js
  */
 

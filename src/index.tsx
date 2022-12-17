@@ -1,21 +1,22 @@
-/**
+/*
  * @Author: fantiga
  * @Date: 2022-12-13 20:39:26
- * @LastEditTime: 2022-12-13 21:01:57
+ * @LastEditTime: 2022-12-17 18:36:18
  * @LastEditors: fantiga
- * @Description:
  * @FilePath: /react-github-ts/src/index.tsx
  */
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+
 import Index from './pages/Index';
 
+import './index.scss';
+/** Import the Roboto font designed for Material UI. / 导入为 Material UI 设计的 Roboto 字体。 */
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import './index.scss';
 
 /**
  * React 18

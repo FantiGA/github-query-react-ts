@@ -1,9 +1,8 @@
 /*
  * @Author: fantiga
  * @Date: 2022-05-23 10:56:30
- * @LastEditTime: 2022-12-16 21:54:22
+ * @LastEditTime: 2022-12-17 18:03:16
  * @LastEditors: fantiga
- * @Description:
  * @FilePath: /react-github-ts/src/utils/request.tsx
  */
 
@@ -17,7 +16,7 @@ const SUCCESS_CODE = 1;
 const WITH_BODY_REQUESTS = ['put', 'get', 'post', 'patch'];
 
 /**
- * 封装Axios
+ * Package Axios / 封装Axios
  * @param options
  * @returns
  */
@@ -56,7 +55,7 @@ const fetch = (options: TAxiosOption) => {
 };
 
 /**
- * 封装axios请求后的Promise链
+ * Promise chain after encapsulating axios request / 封装axios请求后的Promise链
  * @param options
  * @returns
  */

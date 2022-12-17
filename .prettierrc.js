@@ -1,10 +1,9 @@
 /*
  * @Author: fantiga
  * @Date: 2022-11-16 19:46:29
- * @LastEditTime: 2022-11-16 19:46:29
+ * @LastEditTime: 2022-12-17 17:59:57
  * @LastEditors: fantiga
- * @Description: 
- * @FilePath: /test-for-mp-frontend-FantiGA/react/.prettierrc.js
+ * @FilePath: /react-github-ts/.prettierrc.js
  */
 
 /**

@@ -1,11 +1,16 @@
 /*
  * @Author: fantiga
  * @Date: 2022-05-23 16:42:43
- * @LastEditTime: 2022-12-16 21:53:12
+ * @LastEditTime: 2022-12-17 18:03:30
  * @LastEditors: fantiga
- * @Description:
  * @FilePath: /react-github-ts/src/utils/interface.tsx
  */
+
+import { GridColDef, GridRowsProp } from '@mui/x-data-grid';
+
+type TColumn = GridColDef;
+
+type TRow = GridRowsProp;
 
 type TAxiosOption = {
   url: string;
@@ -15,28 +20,12 @@ type TAxiosOption = {
   headers?: object;
 };
 
-type TInputQQ = {
-  inputQq: string;
+type TQuery = {
+  getKeyword: (keyword: string) => void;
 };
 
-interface IInput {
-  param: TInputQQ;
-  setParam: () => void;
-}
-
-type IResult = {
-  name?: string;
-  qlogo?: string;
-  qq?: string;
-  code?: number;
-  message?: string;
-  success?: boolean;
-  statusCode?: number;
-  lvzuan?: object;
+type TResult = {
+  keyword: string;
 };
 
-interface IQQInfo {
-  info: IResult;
-}
-
-export { TAxiosOption, TInputQQ, IInput, IResult, IQQInfo };
+export { TColumn, TRow, TAxiosOption, TQuery, TResult };

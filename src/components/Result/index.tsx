@@ -1,200 +1,102 @@
 /*
  * @Author: fantiga
  * @Date: 2022-05-23 16:30:01
- * @LastEditTime: 2022-12-14 21:07:35
+ * @LastEditTime: 2022-12-17 18:50:13
  * @LastEditors: fantiga
- * @Description:
  * @FilePath: /react-github-ts/src/components/Result/index.tsx
  */
 
-import { useState, MouseEvent, ChangeEvent } from 'react';
-import { styled } from '@mui/system';
-import TablePaginationUnstyled, {
-  tablePaginationUnstyledClasses as classes,
-} from '@mui/base/TablePaginationUnstyled';
+import { useState, FC, useEffect } from 'react';
 
-import './index.scss';
+import { Avatar, Box, Link } from '@mui/material';
+import { DataGrid, GridRowsProp } from '@mui/x-data-grid';
+import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 
-function createData(name: string, calories: number, fat: number) {
-  return { name, calories, fat };
-}
+import request from '@/utils/request';
+import { TColumn, TResult } from '@utils/interface';
 
-const rows = [
-  createData('Cupcake', 305, 3.7),
-  createData('Donut', 452, 25.0),
-  createData('Eclair', 262, 16.0),
-  createData('Frozen yoghurt', 159, 6.0),
-  createData('Gingerbread', 356, 16.0),
-  createData('Honeycomb', 408, 3.2),
-  createData('Ice cream sandwich', 237, 9.0),
-  createData('Jelly Bean', 375, 0.0),
-  createData('KitKat', 518, 26.0),
-  createData('Lollipop', 392, 0.2),
-  createData('Marshmallow', 318, 0),
-  createData('Nougat', 360, 19.0),
-  createData('Oreo', 437, 18.0),
-].sort((a, b) => (a.calories < b.calories ? -1 : 1));
+const url = 'https://api.github.com/search/repositories';
 
-const blue = {
-  200: '#A5D8FF',
-  400: '#3399FF',
-};
-
-const grey = {
-  50: '#f6f8fa',
-  100: '#eaeef2',
-  200: '#d0d7de',
-  300: '#afb8c1',
-  400: '#8c959f',
-  500: '#6e7781',
-  600: '#57606a',
-  700: '#424a53',
-  800: '#32383f',
-  900: '#24292f',
-};
-
-const Root = styled('div')(
-  ({ theme }) => `
-  table {
-    font-family: IBM Plex Sans, sans-serif;
-    font-size: 0.875rem;
-    width: 100%;
-    background-color: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
-    box-shadow: 0px 4px 30px ${theme.palette.mode === 'dark' ? grey[900] : grey[200]};
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[200]};
-  }
-
-  td,
-  th {
-    padding: 16px;
-
-  }
-
-  th {
-    background-color: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
-  }
-  `
-);
-
-const CustomTablePagination = styled(TablePaginationUnstyled)(
-  ({ theme }) => `
-  & .${classes.spacer} {
-    display: none;
-  }
-
-  & .${classes.toolbar}  {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    background-color: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
-
-    @media (min-width: 768px) {
-      flex-direction: row;
-      align-items: center;
-    }
-  }
-
-  & .${classes.selectLabel} {
-    margin: 0;
-  }
-
-  & .${classes.select}{
-    padding: 2px;
-    border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[200]};
-    border-radius: 50px;
-    background-color: transparent;
-    color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
-
-    &:hover {
-      background-color: ${theme.palette.mode === 'dark' ? grey[800] : grey[50]};
-    }
-
-    &:focus {
-      outline: 1px solid ${theme.palette.mode === 'dark' ? blue[400] : blue[200]};
-    }
-  }
-
-  & .${classes.displayedRows} {
-    margin: 0;
-
-    @media (min-width: 768px) {
-      margin-left: auto;
-    }
-  }
-
-  & .${classes.actions} {
-    padding: 2px;
-    border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[200]};
-    border-radius: 50px;
-    text-align: center;
-  }
-
-  & .${classes.actions} > button {
-    margin: 0 8px;
-    border: transparent;
-    border-radius: 2px;
-    background-color: transparent;
-    color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
-
-    &:hover {
-      background-color: ${theme.palette.mode === 'dark' ? grey[800] : grey[50]};
-    }
-
-    &:focus {
-      outline: 1px solid ${theme.palette.mode === 'dark' ? blue[400] : blue[200]};
-    }
-  }
-  `
-);
-
-const Result = (props: any) => {
+const Result: FC<TResult> = (props) => {
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [pageSize, setPageSize] = useState(10);
+  const [rows, setRows] = useState<GridRowsProp>([]);
+  const [rowCount, setRowCount] = useState(0);
+  const { keyword } = props;
 
-  const handleChangePage = (
-    event: MouseEvent<HTMLButtonElement> | null,
-    newPage: number
-  ) => {
-    setPage(newPage);
-  };
+  const columns: TColumn[] = [
+    { field: 'id', headerName: 'ID' },
+    { field: 'full_name', headerName: 'Full Name', width: 200 },
+    { field: 'language', headerName: 'Language', width: 100 },
+    {
+      field: 'owner',
+      headerName: 'Owner',
+      width: 200,
+      renderCell: (params) => {
+        if (params.value == null) return '';
+        return (
+          <Link href={params.value.html_url} target="_blank">
+            <Grid2 container alignItems="center">
+              <Avatar alt={params.value.login} src={params.value.avatar_url} />
+              <Box sx={{ marginLeft: 1 }}>{params.value.login}</Box>
+            </Grid2>
+          </Link>
+        );
+      },
+    },
+    {
+      field: 'html_url',
+      headerName: 'URL',
+      width: 300,
+      renderCell: (params) => {
+        if (params.value == null) return '';
+        return (
+          <Link href={params.value} target="_blank">
+            {params.value}
+          </Link>
+        );
+      },
+    },
+    { field: 'description', headerName: 'Description', width: 300 },
+  ];
 
-  const handleChangeRowsPerPage = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
+  useEffect(() => {
+    if (keyword) {
+      request({
+        /**
+         * Because the default page is 0, the request URL here must be increased by 1.
+         * Otherwise it will cause a page turning bug.
+         * 因为默认的page是0，所以这里的请求地址必须加1，否则会导致翻页的bug。
+         */
+        url: `${url}?q=${encodeURIComponent(keyword)}&per_page=${pageSize}&page=${
+          page + 1
+        }`,
+        method: 'get',
+      })
+        .then((res) => {
+          setRows(res.items);
+          setRowCount(Math.ceil(res.total_count / pageSize));
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    }
+  }, [keyword, pageSize, page]);
 
   return (
-    <Root sx={{ width: '100%' }}>
-      <table aria-label="custom pagination table">
-        <tfoot>
-          <tr>
-            <CustomTablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-              colSpan={3}
-              count={rows.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              slotProps={{
-                select: {
-                  'aria-label': 'rows per page',
-                },
-                actions: {
-                  showFirstButton: true,
-                  showLastButton: true,
-                } as any,
-              }}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-          </tr>
-        </tfoot>
-      </table>
-    </Root>
+    <DataGrid
+      autoHeight
+      pagination
+      paginationMode="server"
+      rows={rows}
+      columns={columns}
+      pageSize={pageSize}
+      page={page}
+      rowCount={rowCount}
+      onPageChange={(newPage) => setPage(newPage)}
+      rowsPerPageOptions={[5, 10, 20, 50, 100]}
+      onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+    />
   );
 };
 export default Result;
