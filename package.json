@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "keywords": [],
   "author": "FantiGA <dev@fantiga.com> (https://github.com/FantiGA)",
-  "license": "ISC",
+  "license": "MIT",
   "description": "",
   "homepage": "https://github.com/FantiGA",
   "dependencies": {

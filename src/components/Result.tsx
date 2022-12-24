@@ -1,9 +1,9 @@
 /*
  * @Author: fantiga
  * @Date: 2022-05-23 16:30:01
- * @LastEditTime: 2022-12-17 18:50:13
+ * @LastEditTime: 2022-12-24 17:06:22
  * @LastEditors: fantiga
- * @FilePath: /react-github-ts/src/components/Result/index.tsx
+ * @FilePath: /github-query-react-ts/src/components/Result/index.tsx
  */
 
 import { useState, FC, useEffect } from 'react';
@@ -33,7 +33,7 @@ const Result: FC<TResult> = (props) => {
       headerName: 'Owner',
       width: 200,
       renderCell: (params) => {
-        if (params.value == null) return '';
+        if (!params.value) return '';
         return (
           <Link href={params.value.html_url} target="_blank">
             <Grid2 container alignItems="center">
@@ -49,7 +49,7 @@ const Result: FC<TResult> = (props) => {
       headerName: 'URL',
       width: 300,
       renderCell: (params) => {
-        if (params.value == null) return '';
+        if (!params.value) return '';
         return (
           <Link href={params.value} target="_blank">
             {params.value}

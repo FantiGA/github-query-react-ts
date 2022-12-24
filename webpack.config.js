@@ -33,7 +33,7 @@ const config = {
       /** Do not use const (for compatibility with IE10) / 不使用const（为了兼容IE10） */
       // const: false,
     },
-    publicPath: './',
+    publicPath: '',
   },
   /** Specify the modules to be used when webpack packs / 指定webpack打包时要用的模块 */
   module: {

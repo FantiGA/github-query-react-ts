@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-12-13 20:53:04
- * @LastEditTime: 2022-12-17 20:54:28
+ * @LastEditTime: 2022-12-24 18:53:48
  * @LastEditors: fantiga
  * @FilePath: /github-query-react-ts/src/pages/Index.tsx
  */
