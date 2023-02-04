@@ -1,10 +1,3 @@
-<!--
- * @Author: fantiga
- * @Date: 2022-12-13 20:35:36
- * @LastEditTime: 2022-12-17 20:48:39
- * @LastEditors: fantiga
- * @FilePath: /github-query-react-ts/README.md
--->
 # github-query-react-ts
 
 - [English](README.md)
@@ -20,10 +13,12 @@ This is a demo of implementing GitHub repository search functionality with React
 
 ## Table of Contents
 
-- [Architecture](#architecture)
-- [Strategies](#strategies)
-- [Maintainers](#maintainers)
-- [License](#license)
+- [github-query-react-ts](#github-query-react-ts)
+  - [Table of Contents](#table-of-contents)
+  - [Architecture](#architecture)
+  - [Strategies](#strategies)
+  - [Maintainers](#maintainers)
+  - [License](#license)
 
 ## Architecture
 
@@ -46,7 +41,6 @@ This is a demo of implementing GitHub repository search functionality with React
  8. The `onPageChange` and `onPageSizeChange` callback methods of the `DataGrid` itself can complete the server asynchronous request for page turning.
  9. Please be careful not to operate frequently, otherwise the API will return "403 Forbidden", resulting in a white screen on the page and a large number of errors in the console. Refresh the page after waiting for a few seconds, and it will return to normal.
  10. Cumulative time spent: about `15` hours.
-
 
 ## Maintainers
 

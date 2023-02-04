@@ -1,12 +1,3 @@
-<!--
- * @Author: fantiga
- * @Date: 2022-12-17 19:40:36
- * @LastEditTime: 2022-12-17 20:48:46
- * @LastEditors: fantiga
- * @Description: 
- * @FilePath: /github-query-react-ts/README.zh-CN.md
--->
-
 # github-query-react-ts
 
 - [English](README.md)
@@ -22,10 +13,12 @@
 
 ## 目录
 
-- [架构](#架构)
-- [策略](#策略)
-- [维护者](#维护者)
-- [许可证](#许可证)
+- [github-query-react-ts](#github-query-react-ts)
+  - [目录](#目录)
+  - [架构](#架构)
+  - [策略](#策略)
+  - [维护者](#维护者)
+  - [许可证](#许可证)
 
 ## 架构
 
@@ -48,7 +41,6 @@
   8. `DataGrid`自身的`onPageChange`和`onPageSizeChange`回调方法可以完成服务器异步请求翻页。
   9. 注意不要频繁操作，否则API会返回“403 Forbidden”，导致页面白屏，控制台大量报错。 等待几秒后刷新页面，即可恢复正常。
   10. 累计花费时间：约`15`小时。
-
 
 ## 维护者
 
